@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GPSTracker.Contracts\GPSTracker.Contracts.csproj" />
+    <ProjectReference Include="..\GPSTracker.Domain\GPSTracker.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

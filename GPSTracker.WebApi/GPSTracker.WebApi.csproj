@@ -11,4 +11,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GPSTracker.Application\GPSTracker.Application.csproj" />
+    <ProjectReference Include="..\GPSTracker.Contracts\GPSTracker.Contracts.csproj" />
+    <ProjectReference Include="..\GPSTracker.Infrastructure\GPSTracker.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
