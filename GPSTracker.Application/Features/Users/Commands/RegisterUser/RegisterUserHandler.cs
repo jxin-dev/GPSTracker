@@ -6,11 +6,11 @@ using MediatR;
 
 namespace GPSTracker.Application.Features.Users.Commands.RegisterUser
 {
-    public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, UserDto>
+    public class RegisterUserHandler : IRequestHandler<RegisterUserCommand, UserDto>
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
-        public RegisterUserCommandHandler(IUserRepository userRepository, IMapper mapper)
+        public RegisterUserHandler(IUserRepository userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
             _mapper = mapper;
