@@ -1,5 +1,9 @@
-﻿using GPSTracker.Domain.Entities;
+﻿using GPSTracker.Contracts.Pagination;
+using GPSTracker.Contracts.Responses;
+using GPSTracker.Domain.Entities;
 using GPSTracker.Domain.Repositories;
+using Mapster;
+using Microsoft.EntityFrameworkCore;
 
 namespace GPSTracker.Infrastructure.Persistence.Repositories
 {
@@ -16,6 +20,25 @@ namespace GPSTracker.Infrastructure.Persistence.Repositories
             await _dbContext.Users.AddAsync(user);
             await _dbContext.SaveChangesAsync();
             return user;
+        }
+
+        public async Task<PagedResult<User>> GetPagedAsync(PaginationParams pagination, CancellationToken cancellationToken)
+        {
+            var query = _dbContext.Users.AsNoTracking();
+            var totalCount = await query.CountAsync(cancellationToken);
+
+            var users = await query.OrderBy(u => u.CreatedAt)
+                .Skip((pagination.PageNumber - 1) * pagination.PageSize)
+                .Take(pagination.PageSize)
+                .ToListAsync(cancellationToken);
+
+            return new PagedResult<User>
+            {
+                Items = users,
+                TotalCount = totalCount,
+                PageNumber = pagination.PageNumber,
+                PageSize = pagination.PageSize
+            };
         }
     }
 }
