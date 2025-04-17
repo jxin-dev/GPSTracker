@@ -1,3 +1,5 @@
+using GPSTracker.Application;
+using GPSTracker.Infrastructure;
 using GPSTracker.WebApi.Extensions;
 using GPSTracker.WebApi.Middleware;
 
@@ -5,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddApplication();
+builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddTransient<GlobalExceptionHandlerMiddleware>();
 
