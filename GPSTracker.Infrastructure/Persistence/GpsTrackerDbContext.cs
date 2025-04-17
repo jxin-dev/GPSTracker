@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using GPSTracker.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace GPSTracker.Infrastructure.Persistence
 {
@@ -6,6 +7,7 @@ namespace GPSTracker.Infrastructure.Persistence
     {
         public GpsTrackerDbContext(DbContextOptions<GpsTrackerDbContext> options) 
             : base(options) { }
-        
+
+        public DbSet<User> Users { get; set; }
     }
 }
