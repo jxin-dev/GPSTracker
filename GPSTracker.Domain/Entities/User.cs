@@ -6,7 +6,7 @@
         public string Username { get; private set; } = string.Empty;
         public string Email { get; private set; } = string.Empty;
         public string PasswordHash { get; private set; } = string.Empty;
-        public DateTime CreateAt { get; private set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
 
         private User(Guid id, string username, string email, string passwordHash)
         {
