@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using GPSTracker.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GPSTracker.Infrastructure
@@ -7,6 +9,9 @@ namespace GPSTracker.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddDbContext<GpsTrackerDbContext>(options =>
+                options.UseInMemoryDatabase("TestDb"));
+
             return services;
         }
     }
