@@ -1,5 +1,8 @@
-﻿using GPSTracker.Application.Mappings;
+﻿using FluentValidation;
+using GPSTracker.Application.Common.Behaviors;
+using GPSTracker.Application.Mappings;
 using Mapster;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GPSTracker.Application
@@ -12,6 +15,9 @@ namespace GPSTracker.Application
             
             TypeAdapterConfig.GlobalSettings.Scan(typeof(MapsterConfig).Assembly);
             services.AddMapster();
+
+            services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviors<,>));
 
             return services;
         }
