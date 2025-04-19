@@ -22,6 +22,21 @@ namespace GPSTracker.Infrastructure.Persistence.Repositories
             return user;
         }
 
+        public async Task<User?> GetByIdAsync(Guid userId)
+        {
+            var user = await _dbContext.Users
+                .Where(user => user.Id == userId).FirstOrDefaultAsync();
+            return user;
+        }
+
+        public async Task<User?> GetByUsernameOrEmailAsync(string username)
+        {
+            var user = await _dbContext.Users
+                .Where(user => user.Username == username || user.Email == username)
+                .FirstOrDefaultAsync();
+            return user;
+        }
+
         public async Task<PagedResult<User>> GetPagedAsync(PaginationParams pagination, CancellationToken cancellationToken)
         {
             var query = _dbContext.Users.AsNoTracking();
