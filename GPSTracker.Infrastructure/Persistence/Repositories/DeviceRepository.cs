@@ -19,6 +19,14 @@ namespace GPSTracker.Infrastructure.Persistence.Repositories
             return device;
         }
 
+        public async Task<Device?> GetDeviceBySerialNumber(string serialNumber)
+        {
+            var device = await _dbContext.Devices
+                .Where(device => device.SerialNumber == serialNumber).FirstOrDefaultAsync();
+            return device;
+
+        }
+
         public async Task<PagedResult<Device>> GetPagedAsync(PaginationParams pagination, CancellationToken cancellationToken)
         {
             var query = _dbContext.Devices.AsNoTracking();

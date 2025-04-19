@@ -21,6 +21,8 @@ namespace GPSTracker.Infrastructure
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IDeviceRepository, DeviceRepository>();
+            services.AddScoped<ILocationRepository, LocationRepository>();
+
 
 
             // Security Services

@@ -7,7 +7,7 @@ namespace GPSTracker.Domain.Repositories
     {
         Task<Device> CreateAsync(Device device);
         //Task<Device> BindDeviceAsync(Device device);
-
+        Task<Device?> GetDeviceBySerialNumber(string serialNumber);
         Task<PagedResult<Device>> GetPagedAsync(PaginationParams pagination, CancellationToken cancellationToken);
     }
 }
