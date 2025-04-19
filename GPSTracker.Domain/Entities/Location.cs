@@ -9,6 +9,7 @@
         public double Longitude { get; private set; } = default!;
         public DateTime Timestamp { get; private set; } = DateTime.UtcNow;
 
+        private Location() { }
         private Location(Device device, double latitude, double longitude)
         {
             Device = device;
