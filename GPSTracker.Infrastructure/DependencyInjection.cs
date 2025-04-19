@@ -1,5 +1,6 @@
 ﻿using GPSTracker.Application.Common.Interfaces;
 using GPSTracker.Domain.Entities;
+using GPSTracker.Domain.Repositories;
 using GPSTracker.Infrastructure.Persistence;
 using GPSTracker.Infrastructure.Persistence.Repositories;
 using GPSTracker.Infrastructure.Security.Jwt;
