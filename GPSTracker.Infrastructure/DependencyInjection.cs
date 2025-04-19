@@ -20,6 +20,9 @@ namespace GPSTracker.Infrastructure
                 options.UseInMemoryDatabase("TestDb"));
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IDeviceRepository, DeviceRepository>();
+
+
             // Security Services
             services.AddSingleton<IJwtTokenService, JwtTokenService>();
             services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
