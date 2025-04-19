@@ -8,6 +8,7 @@
         public string PhoneNumber { get; private set; } = default!;
         public DateTime RegisteredAt { get; private set; } = DateTime.UtcNow;
 
+        private DevicePhoneNumber() { }
         private DevicePhoneNumber(Device device, string phoneNumber)
         {
             Device = device;
