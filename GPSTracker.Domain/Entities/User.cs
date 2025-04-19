@@ -8,18 +8,22 @@
         public string PasswordHash { get; private set; } = string.Empty;
         public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
 
-        private User(Guid id, string username, string email, string passwordHash)
+        private User(Guid id, string username, string email)
         {
             Id = id;
             Username = username;
             Email = email;
-            PasswordHash = passwordHash;
         }
 
-        public static User Create(string username, string email, string passwordHash)
+        public static User Create(string username, string email)
         {
-            User user = new(Guid.NewGuid(), username, email, passwordHash);
+            User user = new(Guid.NewGuid(), username, email);
             return user;
+        }
+
+        public void SetPassword(string passwordHash)
+        {
+            PasswordHash = passwordHash;
         }
     }
 }
